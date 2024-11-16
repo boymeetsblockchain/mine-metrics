@@ -20,7 +20,7 @@ function AdminPage() {
     // Fetch all users from the database
     const fetchUsers = async () => {
       const fetchedUsers = await getAllUsers();
-      setUsers(fetchedUsers);
+      setUsers(fetchedUsers as User[]);
     };
     fetchUsers();
   }, []);

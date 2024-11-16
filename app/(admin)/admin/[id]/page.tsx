@@ -4,13 +4,25 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { User } from "@prisma/client";
+import { UserRole } from "@prisma/client"; // Use the enum from Prisma
+
+interface UserProps {
+  id: string;
+  fullname: string | null;
+  email: string | null;
+  phone: string | null;
+  amount: number | null;
+  role: UserRole; // Use Prisma's UserRole type
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 function GetSingleUserPage() {
   const params = useParams();
   const { id } = params;
 
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserProps | null>(null);
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -19,7 +31,7 @@ function GetSingleUserPage() {
   useEffect(() => {
     const fetchUser = async () => {
       const userData = await getSingleUser(id as string);
-      setUser(userData);
+      setUser(userData as UserProps); // Ensure userData matches UserProps
     };
     fetchUser();
   }, [id]);
@@ -28,8 +40,12 @@ function GetSingleUserPage() {
   const handleUpdateAmount = async () => {
     setLoading(true);
     const response = await updateUserAmount(id as string, amount);
+
     if (response.success) {
       setMessage("User amount updated successfully!");
+      // Fetch updated user data
+      const updatedUserData = await getSingleUser(id as string);
+      setUser(updatedUserData as UserProps);
     } else {
       setMessage(response.error || "An error occurred.");
     }

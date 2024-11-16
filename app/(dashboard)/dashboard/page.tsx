@@ -25,7 +25,7 @@ function DashBoardPage() {
       if (sessionData?.user?.id) {
         try {
           const fetchedUser = await getUserById(sessionData.user.id);
-          setUser(fetchedUser);
+          setUser(fetchedUser as User);
         } catch (error) {
           console.error("Error fetching user:", error);
         } finally {
