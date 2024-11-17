@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Grid, LayoutGrid, X } from "lucide-react";
 import { useState } from "react";
-
+import { useSession } from "next-auth/react";
 const navbarArray = [
   {
     name: "Home",
@@ -28,13 +28,18 @@ const navbarArray = [
 
 export const Navbar = () => {
   const [mobile, setMobile] = useState<boolean>(false);
-
+  const { data } = useSession();
   return (
-    <nav className="mx-auto flex max-w-7xl items-center z-10 sticky  justify-between p-6 lg:px-8">
+    <nav className="mx-auto flex max-w-7xl items-center z-10 sticky  justify-between py-4 px-6 lg:px-8">
       {/* Logo */}
       <div className="flex items-center">
         {/* <Image src={"/logo.jpg"} height={40} width={40} alt="logo" /> */}
-        <h1 className={cn("text-2xl font-bold text-black", prata.className)}>
+        <h1
+          className={cn(
+            " text-lg md:text-2xl  font-bold text-black",
+            prata.className
+          )}
+        >
           Mine Metrics
         </h1>
       </div>
@@ -44,7 +49,7 @@ export const Navbar = () => {
         {navbarArray.map((item) => (
           <p
             key={item.name}
-            className="hover:text-white px-2 py-1.5 rounded-lg hover:bg-black transition-colors"
+            className="hover:text-white px-2 py-1.5 rounded-lg hover:bg-blue-500 transition-colors"
           >
             <Link href={item.link}>{item.name}</Link>
           </p>
@@ -52,22 +57,31 @@ export const Navbar = () => {
       </div>
 
       {/* Login and Sign-up Buttons */}
-      <div className="hidden md:flex space-x-4">
+      {data ? (
         <Button
           asChild
-          variant={"outline"}
-          className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+          className="border hidden md:flex bg-blue-500 text-white border-gray-500  hover:bg-gray-700 hover:text-white transition-colors"
         >
-          <Link href={"/login"}> Login</Link>
+          <Link href={"/dashboard"}>DashBoard</Link>
         </Button>
-        <Button
-          asChild
-          variant={"ghost"}
-          className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
-        >
-          <Link href={"/register"}> Sign Up</Link>
-        </Button>
-      </div>
+      ) : (
+        <div className=" md:flex space-x-4">
+          <Button
+            asChild
+            variant={"outline"}
+            className="border bg-blue-500 text-white border-gray-500  hover:bg-gray-700 hover:text-white transition-colors"
+          >
+            <Link href={"/login"}> Login</Link>
+          </Button>
+          <Button
+            asChild
+            variant={"ghost"}
+            className="border  bg-blue-500 text-white border-gray-500  hover:bg-gray-700 hover:text-white transition-colors"
+          >
+            <Link href={"/register"}> Sign Up</Link>
+          </Button>
+        </div>
+      )}
 
       {/* Mobile Hamburger Button */}
       <div className="flex md:hidden">
@@ -91,28 +105,37 @@ export const Navbar = () => {
             {navbarArray.map((item) => (
               <li
                 key={item.name}
-                className="hover:text-white p-1.5 rounded-lg hover:bg-black transition-colors"
+                className="hover:text-white p-1.5 text-sm  rounded-lg hover:bg-blue-500 transition-colors"
                 onClick={() => setMobile(false)} // Close the mobile menu on click
               >
                 <Link href={item.link}>{item.name}</Link>
               </li>
             ))}
-            <div className="flex flex-col items-center space-y-4 mt-4">
+            {data ? (
               <Button
                 asChild
-                variant={"outline"}
-                className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                className="border border-gray-500 bg-blue-500 text-white hover:bg-gray-700 hover:text-white transition-colors"
               >
-                <Link href={"/login"}> Login</Link>
+                <Link href={"/dashboard"}>DashBoard</Link>
               </Button>
-              <Button
-                asChild
-                variant={"ghost"}
-                className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
-              >
-                <Link href={"/register"}> Sign Up</Link>
-              </Button>
-            </div>
+            ) : (
+              <div className="flex flex-col items-center space-y-4 mt-4">
+                <Button
+                  asChild
+                  variant={"outline"}
+                  className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                >
+                  <Link href={"/login"}> Login</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant={"ghost"}
+                  className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                >
+                  <Link href={"/register"}> Sign Up</Link>
+                </Button>
+              </div>
+            )}
           </ul>
         </div>
       )}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { SessionProvider } from "next-auth/react";
 const poppins = localFont({ src: "./fonts/Poppins-Regular.ttf" });
 
 export const metadata: Metadata = {
@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className}`}>{children}</body>
+      <body className={`${poppins.className}`}>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

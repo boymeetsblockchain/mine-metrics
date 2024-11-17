@@ -4,7 +4,7 @@ export const Partners = () => {
   return (
     <div
       id=""
-      className="flex flex-col items-center justify-center py-10 px-6 bg-gray-50"
+      className="flex flex-col items-center justify-center py-10 px-6 bg-gray-100"
     >
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-8 text-center">
         Our Partners and Sponsors
@@ -14,7 +14,7 @@ export const Partners = () => {
           <Image
             src="/coinbase.png"
             height={100}
-            width={150}
+            width={100}
             alt="Coinbase"
             className="transition-transform transform group-hover:scale-105 group-hover:brightness-110"
           />
@@ -23,7 +23,7 @@ export const Partners = () => {
           <Image
             src="/metamask.png"
             height={100}
-            width={150}
+            width={100}
             alt="Metamask"
             className="transition-transform transform group-hover:scale-105 group-hover:brightness-110"
           />
@@ -32,7 +32,7 @@ export const Partners = () => {
           <Image
             src="/trustwallet.png"
             height={100}
-            width={150}
+            width={100}
             alt="Trust Wallet"
             className="transition-transform transform group-hover:scale-105 group-hover:brightness-110"
           />
@@ -41,7 +41,7 @@ export const Partners = () => {
           <Image
             src="/phantom.webp"
             height={100}
-            width={150}
+            width={100}
             alt="Phantom"
             className="transition-transform transform group-hover:scale-105 group-hover:brightness-110"
           />
