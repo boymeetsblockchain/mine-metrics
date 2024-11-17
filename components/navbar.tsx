@@ -65,7 +65,7 @@ export const Navbar = () => {
           <Link href={"/dashboard"}>DashBoard</Link>
         </Button>
       ) : (
-        <div className=" md:flex space-x-4">
+        <div className="  hidden md:flex space-x-4">
           <Button
             asChild
             variant={"outline"}
@@ -100,7 +100,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobile && (
-        <div className="absolute top-16 left-0 w-full bg-white   z-10">
+        <div className="absolute top-16 left-0 w-full bg-white  z-10">
           <ul className="space-y-4 py-6 px-4 text-center">
             {navbarArray.map((item) => (
               <li
@@ -123,14 +123,14 @@ export const Navbar = () => {
                 <Button
                   asChild
                   variant={"outline"}
-                  className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                  className="border border-gray-500 bg-blue-500 text-white hover:bg-gray-700 hover:text-white transition-colors"
                 >
                   <Link href={"/login"}> Login</Link>
                 </Button>
                 <Button
                   asChild
                   variant={"ghost"}
-                  className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                  className="border border-gray-500 bg-blue-500 text-white hover:bg-gray-700 hover:text-white transition-colors"
                 >
                   <Link href={"/register"}> Sign Up</Link>
                 </Button>

@@ -107,7 +107,7 @@ function SignUpPage() {
             />
             <Button
               type="submit"
-              className="border border-gray-500 text-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+              className="border border-gray-500 bg-blue-500 text-white hover:bg-gray-700 hover:text-white transition-colors"
             >
               Submit
             </Button>

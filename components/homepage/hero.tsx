@@ -14,7 +14,7 @@ export const HeroComponent = () => {
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
       {/* Main content */}
-      <div className="relative z-10 text-center flex items-center flex-col gap-y-5 text-white p-6">
+      <div className="relative z-8 text-center flex items-center flex-col gap-y-5 text-white p-6">
         {/* Main Heading */}
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
           Unlock the Future of Mining
