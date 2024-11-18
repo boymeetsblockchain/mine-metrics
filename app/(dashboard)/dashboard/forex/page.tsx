@@ -30,7 +30,7 @@ function ForexPage() {
       <Header text="Cryptocurrency" />
       <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-x-2 gap-y-6 mt-6">
         <div className="">
-          <Card icon={ChartAreaIcon} title="Forex Market" amount="0" />
+          <Card icon={ChartAreaIcon} title="Forex Market" amount={0} />
         </div>
 
         <div className="shadow-lg rounded-lg bg-white p-4 flex flex-col items-center justify-center">
