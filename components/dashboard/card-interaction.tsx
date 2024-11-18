@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 interface CardsProps {
   icon?: React.ElementType;
   title: string;
-  amount: string;
+  amount: number;
 }
 
 export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
@@ -22,7 +22,7 @@ export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
           <div className=" rounded-md p-2 mt-3">
             <h1 className="text-gray-500 text-sm">Total Balance:</h1>
             <span className="text-xl font-semibold text-blue-600">
-              {amount}
+              ${amount + amount * 0.1}
             </span>
           </div>
           <div className="flex items-center gap-x-4">
@@ -54,11 +54,13 @@ export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
         <div className="flex justify-between items-center mt-4">
           <div>
             <h1 className="text-gray-500 text-sm">Deposit:</h1>
-            <span className="text-md font-medium text-blue-600">$0</span>
+            <span className="text-md font-medium text-blue-600">${amount}</span>
           </div>
           <div>
             <h1 className="text-gray-500 text-sm">Profit:</h1>
-            <span className="text-md font-medium text-blue-600">$0</span>
+            <span className="text-md font-medium text-blue-600">
+              ${amount * 0.1}
+            </span>
           </div>
         </div>
       </div>

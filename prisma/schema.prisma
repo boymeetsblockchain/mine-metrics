@@ -23,7 +23,7 @@ model User {
   fullname  String?
   email     String?  @unique
   phone     String?
-  amount    Int?     @default(0)
+  amount    Int      @default(0)
   role      UserRole @default(USER)
   password  String
   createdAt DateTime @default(now())

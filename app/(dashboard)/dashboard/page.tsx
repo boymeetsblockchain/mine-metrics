@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 import { User } from "@prisma/client";
+import Image from "next/image";
 
 const MarketOverview = dynamic(
   () => import("react-ts-tradingview-widgets").then((w) => w.MarketOverview),
@@ -37,7 +38,17 @@ function DashBoardPage() {
   }, [sessionData?.user?.id]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="min-h-screen w-full mx-auto bg-white flex items-center justify-center">
+        <Image
+          src={"/logo.png"}
+          height={100}
+          width={100}
+          alt="Logo"
+          className="animate-spin"
+        />
+      </div>
+    );
   }
 
   if (!user) {

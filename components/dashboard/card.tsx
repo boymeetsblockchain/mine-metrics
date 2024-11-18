@@ -1,9 +1,7 @@
-import { IconNode } from "lucide-react";
-
 interface DashBoardCardsProps {
   icon?: React.ElementType;
   title: string;
-  amount: string | number | null;
+  amount: number;
 }
 
 export const DashBoardCards = ({
@@ -23,17 +21,21 @@ export const DashBoardCards = ({
 
         <div className="bg-gray-100 rounded-md p-2 mt-3">
           <h1 className="text-gray-500 text-sm">Total Balance:</h1>
-          <span className="text-xl font-semibold text-blue-600">${amount}</span>
+          <span className="text-xl font-semibold text-blue-600">
+            ${amount + amount * 0.1}
+          </span>
         </div>
 
         <div className="flex justify-between items-center mt-4">
           <div>
             <h1 className="text-gray-500 text-sm">Deposit:</h1>
-            <span className="text-md font-medium text-blue-600">$0</span>
+            <span className="text-md font-medium text-blue-600">${amount}</span>
           </div>
           <div>
             <h1 className="text-gray-500 text-sm">Profit:</h1>
-            <span className="text-md font-medium text-blue-600">$0</span>
+            <span className="text-md font-medium text-blue-600">
+              ${amount * 0.1}
+            </span>
           </div>
         </div>
       </div>
