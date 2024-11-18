@@ -63,10 +63,21 @@ function DashBoardPage() {
         <DashBoardCards
           title="Cryptocurrency"
           icon={Bitcoin}
+          profit={user.profit}
           amount={user?.amount}
         />
-        <DashBoardCards title="Forex" icon={TrendingUp} amount={user?.amount} />
-        <DashBoardCards title="Stocks" icon={BarChart2} amount={user?.amount} />
+        <DashBoardCards
+          title="Forex"
+          icon={TrendingUp}
+          amount={user?.amount}
+          profit={user.profit}
+        />
+        <DashBoardCards
+          title="Stocks"
+          icon={BarChart2}
+          amount={user?.amount}
+          profit={user.profit}
+        />
       </div>
       <div>
         <MarketOverview

@@ -39,6 +39,7 @@ function AdminPage() {
             <TableHead className="p-4 text-left">Email</TableHead>
             <TableHead className="p-4 text-left">Phone</TableHead>
             <TableHead className="p-4 text-left">Amount</TableHead>
+            <TableHead className="p-4 text-left">Profit</TableHead>
             <TableHead className="p-4 text-left">Role</TableHead>
             <TableHead className="p-4 text-left">Joined Date</TableHead>
           </TableRow>
@@ -55,6 +56,7 @@ function AdminPage() {
                 <TableCell className="p-4">{user.email || "N/A"}</TableCell>
                 <TableCell className="p-4">{user.phone || "N/A"}</TableCell>
                 <TableCell className="p-4">${user.amount || 0}</TableCell>
+                <TableCell className="p-4">${user.profit || 0}</TableCell>
                 <TableCell className="p-4 capitalize">{user.role}</TableCell>
                 <TableCell className="p-4">
                   {new Date(user.createdAt).toLocaleDateString()}

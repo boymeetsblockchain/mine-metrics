@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { UserRole } from "@prisma/client"; // Use the enum from Prisma
+import { Label } from "@/components/ui/label";
 
 interface UserProps {
   id: string;
@@ -24,6 +25,7 @@ function GetSingleUserPage() {
 
   const [user, setUser] = useState<UserProps | null>(null);
   const [amount, setAmount] = useState(0);
+  const [profit, setProfit] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -39,7 +41,7 @@ function GetSingleUserPage() {
   // Handle updating user amount
   const handleUpdateAmount = async () => {
     setLoading(true);
-    const response = await updateUserAmount(id as string, amount);
+    const response = await updateUserAmount(id as string, amount, profit);
 
     if (response.success) {
       setMessage("User amount updated successfully!");
@@ -57,7 +59,7 @@ function GetSingleUserPage() {
       <h1 className="text-2xl font-semibold mb-4">User Details</h1>
       {message && <p className="text-green-500 mb-4">{message}</p>}
       {user ? (
-        <div className="w-full max-w-md bg-gray-100 p-6 rounded-md shadow-md">
+        <div className="w-full max-w-md  p-6 rounded-md shadow-md">
           <p>
             <strong>Full Name:</strong> {user.fullname}
           </p>
@@ -75,10 +77,19 @@ function GetSingleUserPage() {
             <label className="block text-sm font-medium mb-1">
               Update Amount:
             </label>
+
+            <Label>Deposit Amount</Label>
             <Input
               type="number"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
+              className="border rounded p-2 w-full mb-4"
+            />
+            <Label>Profit </Label>
+            <Input
+              type="number"
+              value={profit}
+              onChange={(e) => setProfit(Number(e.target.value))}
               className="border rounded p-2 w-full"
             />
           </div>

@@ -4,9 +4,10 @@ interface CardsProps {
   icon?: React.ElementType;
   title: string;
   amount: number;
+  profit: number;
 }
 
-export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
+export const Card = ({ icon: Icon, title, amount, profit }: CardsProps) => {
   const router = useRouter();
   return (
     <div className="bg-white shadow-lg p-6 rounded-lg w-full h-[250px] hover:shadow-xl transition-shadow duration-300">
@@ -22,7 +23,7 @@ export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
           <div className=" rounded-md p-2 mt-3">
             <h1 className="text-gray-500 text-sm">Total Balance:</h1>
             <span className="text-xl font-semibold text-blue-600">
-              ${amount + amount * 0.1}
+              ${amount + profit}
             </span>
           </div>
           <div className="flex items-center gap-x-4">
@@ -58,9 +59,7 @@ export const Card = ({ icon: Icon, title, amount }: CardsProps) => {
           </div>
           <div>
             <h1 className="text-gray-500 text-sm">Profit:</h1>
-            <span className="text-md font-medium text-blue-600">
-              ${amount * 0.1}
-            </span>
+            <span className="text-md font-medium text-blue-600">${profit}</span>
           </div>
         </div>
       </div>

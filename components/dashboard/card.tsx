@@ -2,12 +2,14 @@ interface DashBoardCardsProps {
   icon?: React.ElementType;
   title: string;
   amount: number;
+  profit: number;
 }
 
 export const DashBoardCards = ({
   title,
   amount,
   icon: Icon,
+  profit,
 }: DashBoardCardsProps) => {
   return (
     <div className="bg-white shadow-lg p-6 rounded-lg hover:shadow-xl transition-shadow duration-300">
@@ -22,7 +24,7 @@ export const DashBoardCards = ({
         <div className="bg-gray-100 rounded-md p-2 mt-3">
           <h1 className="text-gray-500 text-sm">Total Balance:</h1>
           <span className="text-xl font-semibold text-blue-600">
-            ${amount + amount * 0.1}
+            ${amount + profit}
           </span>
         </div>
 
@@ -33,9 +35,7 @@ export const DashBoardCards = ({
           </div>
           <div>
             <h1 className="text-gray-500 text-sm">Profit:</h1>
-            <span className="text-md font-medium text-blue-600">
-              ${amount * 0.1}
-            </span>
+            <span className="text-md font-medium text-blue-600">${profit}</span>
           </div>
         </div>
       </div>

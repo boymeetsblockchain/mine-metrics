@@ -57,6 +57,7 @@ function CryptoPage() {
             icon={Bitcoin}
             title="Cryptocurrency"
             amount={user?.amount as number}
+            profit={user?.profit as number}
           />
         </div>
 

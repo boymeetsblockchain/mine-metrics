@@ -7,7 +7,7 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const session = await auth();
-  if (session?.user.role === "ADMIN") {
+  if (session?.user.role === "USER") {
     redirect("/");
   }
 

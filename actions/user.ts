@@ -114,13 +114,14 @@ export const getSingleUser = async(id:string)=>{
 
 
 
-export const updateUserAmount = async (id: string, amount: number) => {
+export const updateUserAmount = async (id: string, amount: number, profit:number) => {
   try {
     // Update user's amount in the database
     const updatedUser = await db.user.update({
       where: { id },
       data: {
-        amount
+        amount,
+        profit
       }
     });
 
