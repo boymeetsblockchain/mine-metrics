@@ -8,7 +8,7 @@ import { useState } from "react";
 // import { toast } from "react-hot-toast";
 
 function DepositPage() {
-  const [btcAddress] = useState("1B166hRGNu9PBAGNZU8Pi4Vv6P7L3xtEEA");
+  const [btcAddress] = useState("");
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(btcAddress).then(() => {
